@@ -26,7 +26,8 @@ async function carregarTabela() {
                   <button>
                       <a href="editar.html?id=${a.id}">Editar</a>
                   </button> 
-                <button>Excluir</button></td>
+                 <button onclick="excluirAluno(${a.id})">Excluir</button>
+                </td>
             </tr>`
     ).join("");
 
@@ -35,9 +36,6 @@ async function carregarTabela() {
     console.error(error.message)
 
   }
-async function Deletar() {
-  console.log("aaaaaaaaa")
-}
 
 
 
@@ -46,4 +44,72 @@ async function Deletar() {
   // }, 2000) // 5 segundos
 }
 
+// async function Deletar(id) {
+//  // e.preventDefault();
+//   alert("aaaaaaaa")
+
+//    try{
+//       const resposta = await fetch(`${API}/${id}`, {
+//         method: "DELETE",
+  
+//       })
+//    // requisicao.status === 200 ? console.log(requisicao.json()) : console.log("Erro na requisição")
+//    if(requisicao.status ===200){
+//       console.log(requisicao.json())
+//    }else{
+//      console.log("Erro na requisição")
+//    }
+//   }catch(error) {
+//     console.error(error)
+//   }
+//  // carregarTabela()
+// }
+
+// async function Deletar(id) {
+//   const confirmar = confirm(`Deseja realmente excluir o aluno de ID ${id}?`);
+//   if (!confirmar) {
+//     return
+//   }
+
+//   try {
+//     const resposta = await fetch(`${API}/${id}`, {
+//       method: "DELETE",
+//     });
+
+//     if (resposta.status ===200) {
+//       alert("Aluno excluído com sucesso!");
+//        carregarTabela(); 
+//     } else {
+//       alert("Erro ao excluir o aluno.");
+//       console.log(await resposta.json());
+//     }
+//     } catch (error) {
+//       console.error(error);
+//       alert("Erro na requisição.");
+//   }
+// }
+
+async function excluirAluno(id) {
+    if (!confirm("Tem certeza que deseja excluir este aluno?")) {
+        return;
+    }
+
+    try {
+        const resposta = await fetch(`http://localhost:3000/alunos/${id}`, {
+            method: "DELETE"
+        });
+
+        if (resposta.ok) {
+            alert("Aluno excluído com sucesso!");
+            carregarTabela(); // recarrega a lista
+        } else {
+            alert("Erro ao excluir aluno!");
+        }
+    } catch (error) {
+        console.error("Erro:", error);
+        alert("Erro de conexão com servidor.");
+    }
+}
+
 carregarTabela();
+

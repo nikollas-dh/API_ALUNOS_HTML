@@ -126,4 +126,39 @@ app.put("/alunos/:id", async(req,res)=>{
         return res.status(500).json({ erro: "Erro ao atualizar aluno" });
     }
 });
+
+// app.delete("/alunos/:id", async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const sql = `DELETE FROM alunos WHERE id = ?`;
+//     const [resultado] = await conexao.execute(sql, [id]);
+
+//     if (resultado.affectedRows === 0) {
+//       return res.status(404).json({ msg: "Aluno não encontrado" });
+//     }
+
+//     res.status(200).json({ msg: "Aluno deletado com sucesso" });
+
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ erro: "Erro ao deletar aluno" });
+//   }
+// });
+
+app.delete("/alunos/:id", async (req, res) => {
+    const id = req.params.id;
+    try {
+        const [resultado] = await conexao.execute("DELETE FROM alunos WHERE id = ?", [id]);
+
+        if (resultado.affectedRows === 0) {
+            return res.status(404).json({ msg: "Aluno não encontrado" });
+        }
+
+        res.status(200).json({ msg: "Aluno excluído com sucesso!" });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ erro: "Erro ao excluir aluno" });
+    }
+});
+
 app.listen(porta, () => console.log(`Servidor rodando http://localhost:${porta}/`));

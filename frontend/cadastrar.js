@@ -21,7 +21,7 @@ async function salvar(e) {
   const numero = inputNumero.value.trim();
   const complemento = inputComplemento.value.trim();
 
-  if(!nome && !cpf){
+  if(!nome && !cpf && !numero){
     alert("Gentileza preecher os campos")
   }
   const novoAluno = {
