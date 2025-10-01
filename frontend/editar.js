@@ -28,9 +28,6 @@ async function carregarAluno() {
     document.getElementById("complemento").value = ALUNO[0].complemento;
 }
 
-
-
-
 async function Atualizar(e) {
     e.preventDefault();
     alert("fpEGOU O BAO DFÇJKLAJKFDSAÇL")
@@ -65,7 +62,7 @@ async function Atualizar(e) {
             console.log(requisicao.json())
             alert("Aluno atualizado com sucesso")
             // Redirect to a new URL
-            window.location.href = "index.html";
+            window.location.href = "menu.html";
         } else {
             console.log("Erro na requisição", requisicao.status)
         }

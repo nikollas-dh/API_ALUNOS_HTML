@@ -1,0 +1,36 @@
+body{
+    /* background-image: url(https://img.freepik.com/fotos-premium/fundo-escolar-com-material-escolar-e-espaco-de-copia_147376-4438.jpg?w=2000); */
+    font-family: sans-serif;
+
+}
+
+h2{
+    color: rgb(20, 136, 190);
+}
+button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btnEditar {
+  background-color: #3498db; /* azul */
+  color: white;
+}
+
+.btnEditar a {
+  text-decoration: none;
+  color: white; /* deixa o link branco */
+}
+
+.btnExcluir {
+  background-color: #e74c3c; /* vermelho */
+  color: white;
+}
+
+.btnExcluir:hover {
+  background-color: #c0392b; /* vermelho mais escuro */
+}
+

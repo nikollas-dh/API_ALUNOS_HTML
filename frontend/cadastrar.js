@@ -1,5 +1,6 @@
 const API = 'http://localhost:3000/alunos'
 
+
 const inputNome = document.getElementById("nome")
 const inputCpf = document.getElementById("cpf")
 const inputCep = document.getElementById("cep")
