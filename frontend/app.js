@@ -1,6 +1,3 @@
-console.log("app.js funcionando");
-
-
 const API = 'http://localhost:3000/alunos'
 
 async function carregarTabela() {
@@ -38,7 +35,9 @@ async function carregarTabela() {
     console.error(error.message)
 
   }
-
+async function Deletar() {
+  console.log("aaaaaaaaa")
+}
 
 
 

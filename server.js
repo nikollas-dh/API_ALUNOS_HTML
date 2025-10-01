@@ -56,7 +56,7 @@ app.post("/alunos", async (req,res) =>{
     }
 })
 
-app.get("/aluno/:id", async(req, res)=>{
+app.get("/alunos/:id", async(req, res)=>{
     const id = req.params.id
     try {
         const[retorno] = await conexao.query(`SELECT * FROM alunos WHERE id = ${id} `)
@@ -68,6 +68,62 @@ app.get("/aluno/:id", async(req, res)=>{
 })
 
 
+// app.put("/alunos", async (req,res) =>{
+//     try {
+//         const {nome, cpf, cep= null,
+//             uf = null, rua = null,
+//             numero = null, complemento= null
+//         } = req.body;
 
+//         if(!nome || !cpf) return res.status(400).json({msg : "Nome e cpf são obrigatorio"})
+//         const sql = `
+//              UPDATE alunos (nome,cpf,cep, uf, rua , numero, complemento)
+//             VALUES  (?, ?, ?, ?, ?, ?, ?)`;
 
+//         const parametro = [nome, cpf, cep, uf, rua, numero, complemento]
+
+//         const [resultado] = await conexao.execute(sql,parametro)
+//         console.log(resultado)
+
+//         const [novo] = await conexao.execute(`SELECT * FROM alunos WHERE id =  ${resultado.insertId}`)
+//         res.status(201).json(novo[0]);
+       
+//     } catch (error) {
+//         console.log(error);
+//         return res.status(500).json({erro : "Erro ao inserir alunos"});
+//     }
+// })
+
+app.put("/alunos/:id", async(req,res)=>{
+    console.log(req.body)
+    try {
+        const {id} = req.params
+        const{nome, cpf, cep, uf, rua, numero, complemento
+        } = req.body
+        
+        if(!nome || !cpf){
+            return res.status(400).json({ msg: "Nome e CPF são obrigatórios" });
+        }
+    const sql = `
+            UPDATE alunos 
+            SET nome = ?, cpf = ?, cep = ?, uf = ?, rua = ?, numero = ?, complemento = ?
+            WHERE id = ?
+        `;
+
+        const parametros = [nome, cpf, cep, uf, rua, numero, complemento, id];
+
+        const [resultado] = await conexao.execute(sql, parametros);
+
+        if (resultado.affectedRows === 0) {
+            return res.status(404).json({ msg: "Aluno não encontrado" });
+        }
+
+        const [novo] = await conexao.execute(`SELECT * FROM alunos WHERE id = ?`, [id]);
+        res.status(200).json(novo[0]);
+       
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ erro: "Erro ao atualizar aluno" });
+    }
+});
 app.listen(porta, () => console.log(`Servidor rodando http://localhost:${porta}/`));
