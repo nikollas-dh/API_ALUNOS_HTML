@@ -10,7 +10,7 @@ const porta = 3000;
 const conexao = mysql.createPool({
     host: "localhost",
     user: "root",
-    password : "senai",
+    password : "senai2025",
     database: "escola_db",
     port: 3306,
     waitForConnections: true,

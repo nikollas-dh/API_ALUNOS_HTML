@@ -40,7 +40,7 @@ async function carregarTabela() {
 
 async function excluirAluno(id) {
     // e.preventDefault();
-    alert("aaaaaaaa")
+  //  alert("aaaaaaaa")
     const confirmarExclusao = confirm(`Deseja realmente excluir o aluno de ID ${id}?`);
     if (!confirmarExclusao) {
         return
@@ -52,7 +52,10 @@ async function excluirAluno(id) {
         })
         // requisicao.status === 200 ? console.log(requisicao.json()) : console.log("Erro na requisição")
         if (resposta.status === 200) {
-            console.log(requisicao.json())
+            console.log(resposta.json())
+            alert("Aluno excluído com sucesso!")
+            carregarTabela();
+
         } else {
             console.log("Erro na requisição")
         }

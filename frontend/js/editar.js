@@ -30,7 +30,7 @@ async function carregarAluno() {
 
 async function Atualizar(e) {
     e.preventDefault();
-    alert("fpEGOU O BAO DFÇJKLAJKFDSAÇL")
+   // alert("fpEGOU O BAO DFÇJKLAJKFDSAÇL")
     const nome = document.getElementById("nome").value.trim();
     const cpf = document.getElementById("cpf").value.trim();
     const cep = document.getElementById("cep").value.trim();

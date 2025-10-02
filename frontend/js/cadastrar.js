@@ -22,26 +22,35 @@ async function salvar(e) {
   const numero = inputNumero.value.trim();
   const complemento = inputComplemento.value.trim();
 
-  if(!nome && !cpf && !numero){
+  if (!nome || !cpf) {
     alert("Gentileza preecher os campos")
+    return;
   }
   const novoAluno = {
     nome, cpf, cep, uf, rua, numero, complemento
   }
 
- // console.log(alunos)
+  // console.log(alunos)
 
-  try{
-      const requisicao = await fetch(API, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: novoAluno ? JSON.stringify(novoAluno) : undefined
-      })
-    requisicao.status === 201 ? console.log(requisicao.json()) : console.log("Erro na requisição")
-  }catch(error) {
+  try {
+    const requisicao = await fetch(API, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(novoAluno)
+    })
+
+    if (requisicao.status === 201) {
+      const dados = await requisicao.json();
+      console.log(dados)
+      alert("Aluno cadastrado com sucesso!")
+      window.location.href = "menu.html";
+    } else {
+      console.log("Erro na requisição")
+    }
+  } catch (error) {
     console.error(error)
   }
- // carregarTabela()
+  // carregarTabela()
 }
 
 formAluno.addEventListener("submit", salvar)
