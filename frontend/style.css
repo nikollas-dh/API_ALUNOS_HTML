@@ -1,9 +1,14 @@
 body{
-    /* background-image: url(https://img.freepik.com/fotos-premium/fundo-escolar-com-material-escolar-e-espaco-de-copia_147376-4438.jpg?w=2000); */
+     /* background-image: url(https://static.vecteezy.com/ti/vetor-gratis/p1/9567254-escola-fundo-fundo-com-doodles-sem-costura-vetor.jpg);  */
     font-family: sans-serif;
 
 }
-
+a{
+  color: yellowgreen;
+}
+tr{
+  background-color: white;
+}
 h2{
     color: rgb(20, 136, 190);
 }

@@ -7,7 +7,6 @@ async function carregarTabela() {
         const ALUNOS = await resposta.json()
         console.log(ALUNOS)
 
-        // console.log(resposta.json())
         const tbody = document.getElementById("tbody")
 
         tbody.innerHTML = "<tr><td colspan='10'>Carregando...</td></tr>"
