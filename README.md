@@ -16,7 +16,7 @@ Este projeto teve como objetivo desenvolver um sistema completo de **CRUD (Creat
 ## Funcionalidades Implementadas:
 
 
-- Criar (POST): Cadastro de novos alunos.
-- Ler (GET): Listagem de todos os alunos e busca por ID.
-- Atualizar (PUT): Edição dos dados de um aluno existente.
-- Excluir (DELETE): Remoção de um aluno do banco de dados.
+- **Criar (POST):** Cadastro de novos alunos.
+- **Ler (GET):** Listagem de todos os alunos e busca por ID.
+- **Atualizar (PUT):** Edição dos dados de um aluno existente.
+- **Excluir (DELETE):** Remoção de um aluno do banco de dados.
